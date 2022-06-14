@@ -91,3 +91,8 @@ a, .btn-link {
     max-width:19rem;
     margin-bottom:1rem !important;
 }
+
+.card-flexwrapper {
+    display : flex;
+    flex-wrap:wrap;
+}
