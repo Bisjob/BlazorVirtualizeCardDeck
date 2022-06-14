@@ -1,0 +1,107 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Bootstrap 4 using Card Deck</h1>
+
+<div class="custom-control custom-checkbox my-1 mr-sm-2">
+    <input type="checkbox" class="custom-control-input" id="cbvirtualize4" @bind-value=@virtualize4>
+    <label class="custom-control-label" for="cbvirtualize4">Virtualize</label>
+</div>
+
+<div class="cards-contanier">
+    <div class="card-deck">
+        @if (virtualize4)
+        {
+            <Virtualize Items="@collection">
+                <div class="card">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title : @context</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            </Virtualize>
+        }
+        else
+        {
+            @foreach (var item in collection)
+            {
+                <div class="card">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title : @item</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<br />
+<hr />
+<br />
+
+
+<h1>Bootstrap 5 using Grid cards</h1>
+
+<div class="custom-control custom-checkbox my-1 mr-sm-2">
+    <input type="checkbox" class="custom-control-input" id="cbvirtualize5" @bind-value=@virtualize5>
+    <label class="custom-control-label" for="cbvirtualize5">Virtualize</label>
+</div>
+
+<div class="cards-contanier">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        @if (virtualize5)
+        {
+            <Virtualize Items="@collection">
+                <div class="col">
+                    <div class="card">
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title : @context</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </Virtualize>
+        }
+        else
+        {
+            @foreach (var item in collection)
+            {
+                <div class="col">
+                    <div class="card">
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title : @item</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+
+@code {
+    ICollection<int> collection = new List<int>();
+
+    bool virtualize4 = false;
+    bool virtualize5 = false;
+
+    protected override void OnInitialized()
+    {
+        for (int i = 0; i < 1000; i++)
+        {
+            collection.Add(i);
+        }
+        base.OnInitialized();
+    }
+}
